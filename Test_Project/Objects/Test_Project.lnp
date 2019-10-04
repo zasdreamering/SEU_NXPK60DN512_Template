@@ -1,0 +1,13 @@
+--cpu Cortex-M4
+".\objects\main.o"
+".\objects\nixie_tube.o"
+".\objects\led.o"
+".\objects\key.o"
+".\objects\interrupt.o"
+".\objects\general_function.o"
+".\objects\startup_mk60d10.o"
+".\objects\system_mk60d10.o"
+--library_type=microlib --strict --scatter ".\Objects\Test_Project.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\Test_Project.map" -o .\Objects\Test_Project.axf
