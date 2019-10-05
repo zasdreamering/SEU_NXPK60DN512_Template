@@ -2,17 +2,17 @@
 #include "nixie_tube.h"
 #include "led.h"
 #include "key.h"
-
+#include "interrupt.h"
 
 
 int main(void)
 {
 	Init_Led();
 	Init_Key();
+	Enable_Key_Interrupt();
 	while(1)
 	{
-		if(Key_Matrix_Scan() == Get_Key_Matrix_Sequence(1)) Toggle_Led_Num(2,ON);
-		delay5ms();
+		
 	}
 }
 

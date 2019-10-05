@@ -1,4 +1,6 @@
 #include "key.h"
+#include "interrupt.h"
+
 
 const uint8_t Key_Matrix_Scan_Sequence[4]={1<<4,1<<5,1<<6,1<<7};
 const uint8_t Key_Matrix_Sequence[16]={0x1,0x2,0x3,0xA,0x4,0x5,0x6,0xB,0x7,0x8,0x9,0xC,0x10,0x12,0x13,0xD};
@@ -23,6 +25,17 @@ void Init_Key(void)
 	PTC->PDDR |= (0xF<<4);
 	PTC->PDOR |= (0xFF<<4);
 	PTC->PDDR &= ~(0xF<<8);
+}
+
+void Enable_Key_Interrupt(void)
+{
+	uint8_t i;
+	Disable_Interrupts;
+	Enable_Interrupt_IRQ(PORTC_IRQn);
+	for(i=12;i<16;i++)	PORTC->PCR[i] |= (1<<8)|0x3|0x9<<16;
+	NVIC_SetPriorityGrouping(0);
+	NVIC_SetPriority(PORTC_IRQn,1);
+	Enable_Interrupts;
 }
 
 uint8_t Key_Scan(uint8_t Key_Num)
