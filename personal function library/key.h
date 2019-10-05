@@ -9,6 +9,8 @@
 
 void Init_Key(void);
 uint8_t Key_Scan(uint8_t Key_Num);
+uint8_t Key_Matrix_Scan(void);
+uint8_t Get_Key_Matrix_Sequence(uint8_t Num);
 
 
 

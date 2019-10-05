@@ -6,6 +6,8 @@
 #define ON		1
 #define OFF		0
 
+
+
 #define PORTA_CLK_ON	(1 << 9)
 #define PORTB_CLK_ON	(1 << 10)
 #define PORTC_CLK_ON	(1 << 11)

@@ -9,6 +9,7 @@ void delay5ms(void)
 	}
 }
 
+
 void delay1s(void)
 {	
 	int i,j,k; 	
