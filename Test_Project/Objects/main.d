@@ -11,3 +11,4 @@
 .\objects\main.o: ..\personal function library\led.h
 .\objects\main.o: ..\personal function library\key.h
 .\objects\main.o: ..\personal function library\interrupt.h
+.\objects\main.o: ..\personal function library\systick.h

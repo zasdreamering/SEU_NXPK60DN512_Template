@@ -1,5 +1,4 @@
 #include "interrupt.h"
-#include "led.h"
 
 
 void Enable_Interrupt_IRQ(int8_t IRQ)
@@ -17,7 +16,9 @@ void Disable_Interrupt_IRQ(int8_t IRQ)
 
 void PORTC_IRQHandler()
 {
+	delay50ms();
 	if(PORTC->ISFR & (1<<15)) 	Toggle_Led_Num(1,ON);
 	PORTC->ISFR |= 1<<15;
+	delay50ms();
 }
 

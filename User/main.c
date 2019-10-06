@@ -3,16 +3,15 @@
 #include "led.h"
 #include "key.h"
 #include "interrupt.h"
-
+#include "systick.h"
 
 int main(void)
 {
 	Init_Led();
-	Init_Key();
-	Enable_Key_Interrupt();
 	while(1)
 	{
-		
+		SysTick_Delay_ms(500);
+		Toggle_Led_Num(1,ON);
 	}
 }
 

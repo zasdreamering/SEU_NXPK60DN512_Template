@@ -16,6 +16,7 @@
 
 
 void delay5ms(void);
+void delay50ms(void);
 void delay1s(void);
 
 

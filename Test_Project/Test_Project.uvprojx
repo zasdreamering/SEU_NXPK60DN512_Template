@@ -461,6 +461,11 @@
               <FileType>1</FileType>
               <FilePath>..\personal function library\general_function.c</FilePath>
             </File>
+            <File>
+              <FileName>systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\personal function library\systick.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

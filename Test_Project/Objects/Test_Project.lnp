@@ -5,6 +5,7 @@
 ".\objects\key.o"
 ".\objects\interrupt.o"
 ".\objects\general_function.o"
+".\objects\systick.o"
 ".\objects\startup_mk60d10.o"
 ".\objects\system_mk60d10.o"
 --library_type=microlib --strict --scatter ".\Objects\Test_Project.sct"
