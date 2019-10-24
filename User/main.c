@@ -1,9 +1,8 @@
-#include "MK60D10.h"
+#include "SystemConfig.h"
 #include "nixie_tube.h"
 #include "led.h"
 #include "key.h"
-#include "interrupt.h"
-#include "systick.h"
+
 
 int main(void)
 {

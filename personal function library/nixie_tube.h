@@ -1,8 +1,7 @@
 #ifndef _NIXIE_TUBE_H
 #define _NIXIE_TUBE_H
 
-#include "MK60D10.h"
-#include "general_function.h"
+#include "SystemConfig.h"
 
 
 
@@ -20,7 +19,8 @@ void Light_Nixie_Tube_NumWithPoint(uint8_t Num,uint8_t State);
 void Tube_Positive_Count(void);
 void Tube_Negative_Count(void);
 void Tube_Negative_Count_Num(uint32_t Num);
-
+void Tube_Time_Count(void);
+void Combined_Count(void);
 
 
 #endif /*_NIXIE_TUBE_H*/

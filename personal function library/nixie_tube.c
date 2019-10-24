@@ -85,7 +85,7 @@ void Tube_Positive_Count(void)        //数码管正计数  十进制
 		PTB->PDOR &= ~(0xFF<<16);
 		Light_Nixie_Tube_Num(Tube_Show_Num[Scan],ON);
 		Light_Nixie_Tube(Scan,ON);
-		delay5ms();
+		SysTick_Delay_ms(5);
 		Light_Nixie_Tube(Scan,OFF);
 		if(++Scan==4) Scan=0;
 	}
@@ -116,7 +116,7 @@ void Tube_Negative_Count(void)       //数码管倒计数  十进制
 		PTB->PDOR &= ~(0xFF<<16);
 		Light_Nixie_Tube_Num(Tube_Show_Num[Scan],ON);
 		Light_Nixie_Tube(Scan,ON);
-		delay5ms();
+		SysTick_Delay_ms(5);
 		Light_Nixie_Tube(Scan,OFF);
 		if(++Scan==4) Scan=0;
 	}
@@ -147,7 +147,36 @@ void Tube_Negative_Count_Num(uint32_t Num)     //数码管按数字倒计数   十进制
 		PTB->PDOR &= ~(0xFF<<16);
 		Light_Nixie_Tube_Num(Tube_Show_Num[Scan],ON);
 		Light_Nixie_Tube(Scan,ON);
-		delay5ms();
+		SysTick_Delay_ms(5);
+		Light_Nixie_Tube(Scan,OFF);
+		if(++Scan==4) Scan=0;
+	}
+}
+void Tube_Time_Count(void)        //计时
+{
+	uint8_t Scan=0;
+	uint8_t Second_Count=0;
+	int8_t Behind_Two_Num=0;
+	int8_t Front_Two_Num=0;
+	while(1)
+	{
+		if(++Second_Count==200)
+		{
+			Second_Count=0;
+			if(++Behind_Two_Num==60)
+			{
+				Behind_Two_Num=0;
+				if(++Front_Two_Num==100) Front_Two_Num=0;
+			}
+		}
+		Tube_Show_Num[3] = Behind_Two_Num%10;
+		Tube_Show_Num[2] = Behind_Two_Num/10;
+		Tube_Show_Num[1] = Front_Two_Num%10;
+		Tube_Show_Num[0] = Front_Two_Num/10;
+		PTB->PDOR &= ~(0xFF<<16);
+		Light_Nixie_Tube_Num(Tube_Show_Num[Scan],ON);
+		Light_Nixie_Tube(Scan,ON);
+		SysTick_Delay_ms(5);
 		Light_Nixie_Tube(Scan,OFF);
 		if(++Scan==4) Scan=0;
 	}

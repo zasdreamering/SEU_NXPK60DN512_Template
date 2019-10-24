@@ -2,16 +2,16 @@
 #define _INTERRUPT_H
 
 #include "MK60D10.h"
-#include "general_function.h"
 #include "led.h"
+#include "key.h"
 
 
 #define Enable_Interrupts  __asm("CPSIE I")
 #define Disable_Interrupts __asm("CPSID I")
 
 
-void Enable_Interrupt_IRQ(int8_t IRQ);
-void Disable_Interrupt_IRQ(int8_t IRQ);
+void Enable_Interrupt_IRQ(IRQn_Type IRQ);
+void Disable_Interrupt_IRQ(IRQn_Type IRQ);
 
 
 #endif /*_INTERRUPT_H*/
