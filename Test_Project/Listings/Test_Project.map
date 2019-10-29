@@ -4,30 +4,40 @@ Component: ARM Compiler 5.06 (build 20) Tool: armlink [4d35a3]
 
 Section Cross References
 
-    main.o(i.main) refers to led.o(i.Init_Led) for Init_Led
-    main.o(i.main) refers to systick.o(i.SysTick_Delay_ms) for SysTick_Delay_ms
-    main.o(i.main) refers to led.o(i.Toggle_Led_Num) for Toggle_Led_Num
+    main.o(i.main) refers to key.o(i.Init_Key) for Init_Key
+    main.o(i.main) refers to nixie_tube.o(i.Init_Nixie_Tube) for Init_Nixie_Tube
+    main.o(i.main) refers to key.o(i.Enable_Key_Interrupt) for Enable_Key_Interrupt
+    main.o(i.main) refers to nixie_tube.o(i.Tube_Pause_Count) for Tube_Pause_Count
+    main.o(i.main) refers to nixie_tube.o(i.Tube_Negative_Count_Num) for Tube_Negative_Count_Num
+    main.o(i.main) refers to main.o(.data) for Count_State
     nixie_tube.o(i.Light_Nixie_Tube_Num) refers to nixie_tube.o(.constdata) for Nixie_Tube_Num
     nixie_tube.o(i.Light_Nixie_Tube_NumWithPoint) refers to nixie_tube.o(.constdata) for Nixie_Tube_Num
-    nixie_tube.o(i.Tube_Negative_Count) refers to nixie_tube.o(i.Light_Nixie_Tube_Num) for Light_Nixie_Tube_Num
-    nixie_tube.o(i.Tube_Negative_Count) refers to nixie_tube.o(i.Light_Nixie_Tube) for Light_Nixie_Tube
-    nixie_tube.o(i.Tube_Negative_Count) refers to systick.o(i.SysTick_Delay_ms) for SysTick_Delay_ms
-    nixie_tube.o(i.Tube_Negative_Count) refers to nixie_tube.o(.data) for Tube_Show_Num
+    nixie_tube.o(i.Tube_Negative_Count_Num) refers to key.o(i.Key_Scan) for Key_Scan
     nixie_tube.o(i.Tube_Negative_Count_Num) refers to nixie_tube.o(i.Light_Nixie_Tube_Num) for Light_Nixie_Tube_Num
     nixie_tube.o(i.Tube_Negative_Count_Num) refers to nixie_tube.o(i.Light_Nixie_Tube) for Light_Nixie_Tube
     nixie_tube.o(i.Tube_Negative_Count_Num) refers to systick.o(i.SysTick_Delay_ms) for SysTick_Delay_ms
-    nixie_tube.o(i.Tube_Negative_Count_Num) refers to nixie_tube.o(.data) for Tube_Show_Num
+    nixie_tube.o(i.Tube_Negative_Count_Num) refers to main.o(.data) for Count_State
+    nixie_tube.o(i.Tube_Pause_Count) refers to key.o(i.Key_Scan) for Key_Scan
+    nixie_tube.o(i.Tube_Pause_Count) refers to nixie_tube.o(i.Light_Nixie_Tube_Num) for Light_Nixie_Tube_Num
+    nixie_tube.o(i.Tube_Pause_Count) refers to nixie_tube.o(i.Light_Nixie_Tube) for Light_Nixie_Tube
+    nixie_tube.o(i.Tube_Pause_Count) refers to systick.o(i.SysTick_Delay_ms) for SysTick_Delay_ms
+    nixie_tube.o(i.Tube_Pause_Count) refers to main.o(.data) for Count_State
+    nixie_tube.o(i.Tube_Positive_Count) refers to key.o(i.Key_Scan) for Key_Scan
     nixie_tube.o(i.Tube_Positive_Count) refers to nixie_tube.o(i.Light_Nixie_Tube_Num) for Light_Nixie_Tube_Num
     nixie_tube.o(i.Tube_Positive_Count) refers to nixie_tube.o(i.Light_Nixie_Tube) for Light_Nixie_Tube
     nixie_tube.o(i.Tube_Positive_Count) refers to systick.o(i.SysTick_Delay_ms) for SysTick_Delay_ms
-    nixie_tube.o(i.Tube_Positive_Count) refers to nixie_tube.o(.data) for Tube_Show_Num
+    nixie_tube.o(i.Tube_Positive_Count) refers to main.o(.data) for Count_State
+    nixie_tube.o(i.Tube_Time_Count) refers to key.o(i.Key_Scan) for Key_Scan
     nixie_tube.o(i.Tube_Time_Count) refers to nixie_tube.o(i.Light_Nixie_Tube_Num) for Light_Nixie_Tube_Num
     nixie_tube.o(i.Tube_Time_Count) refers to nixie_tube.o(i.Light_Nixie_Tube) for Light_Nixie_Tube
     nixie_tube.o(i.Tube_Time_Count) refers to systick.o(i.SysTick_Delay_ms) for SysTick_Delay_ms
-    nixie_tube.o(i.Tube_Time_Count) refers to nixie_tube.o(.data) for Tube_Show_Num
+    nixie_tube.o(i.Tube_Time_Count) refers to main.o(.data) for Count_State
     key.o(i.Enable_Key_Interrupt) refers to interrupt.o(i.Enable_Interrupt_IRQ) for Enable_Interrupt_IRQ
     key.o(i.Key_Scan) refers to key.o(.bss) for Key_Flag
     key.o(i.Key_Scan) refers to key.o(.constdata) for Key_Matrix_Scan_Sequence
+    interrupt.o(i.PORTC_IRQHandler) refers to key.o(i.Key_Scan) for Key_Scan
+    interrupt.o(i.PORTC_IRQHandler) refers to main.o(.data) for Count_State
+    interrupt.o(i.PORTC_IRQHandler) refers to key.o(.bss) for Key_Flag
     startup_mk60d10.o(RESET) refers to startup_mk60d10.o(STACK) for __initial_sp
     startup_mk60d10.o(RESET) refers to startup_mk60d10.o(.text) for Reset_Handler
     startup_mk60d10.o(RESET) refers to interrupt.o(i.PORTC_IRQHandler) for PORTC_IRQHandler
@@ -61,33 +71,22 @@ Removing Unused input sections from the image.
     Removing nixie_tube.o(.rev16_text), (4 bytes).
     Removing nixie_tube.o(.revsh_text), (4 bytes).
     Removing nixie_tube.o(.rrx_text), (6 bytes).
-    Removing nixie_tube.o(i.Init_Nixie_Tube), (136 bytes).
-    Removing nixie_tube.o(i.Light_Nixie_Tube), (48 bytes).
-    Removing nixie_tube.o(i.Light_Nixie_Tube_Num), (56 bytes).
     Removing nixie_tube.o(i.Light_Nixie_Tube_NumWithPoint), (64 bytes).
-    Removing nixie_tube.o(i.Tube_Negative_Count), (156 bytes).
-    Removing nixie_tube.o(i.Tube_Negative_Count_Num), (180 bytes).
-    Removing nixie_tube.o(i.Tube_Positive_Count), (156 bytes).
-    Removing nixie_tube.o(i.Tube_Time_Count), (156 bytes).
-    Removing nixie_tube.o(.constdata), (10 bytes).
-    Removing nixie_tube.o(.data), (4 bytes).
+    Removing nixie_tube.o(i.Tube_Positive_Count), (184 bytes).
+    Removing nixie_tube.o(i.Tube_Time_Count), (184 bytes).
     Removing led.o(.rev16_text), (4 bytes).
     Removing led.o(.revsh_text), (4 bytes).
     Removing led.o(.rrx_text), (6 bytes).
+    Removing led.o(i.Init_Led), (88 bytes).
     Removing led.o(i.Light_Led_Num), (56 bytes).
+    Removing led.o(i.Toggle_Led_Num), (32 bytes).
     Removing key.o(.rev16_text), (4 bytes).
     Removing key.o(.revsh_text), (4 bytes).
     Removing key.o(.rrx_text), (6 bytes).
-    Removing key.o(i.Enable_Key_Interrupt), (156 bytes).
-    Removing key.o(i.Init_Key), (196 bytes).
-    Removing key.o(i.Key_Scan), (172 bytes).
-    Removing key.o(.bss), (20 bytes).
-    Removing key.o(.constdata), (4 bytes).
     Removing interrupt.o(.rev16_text), (4 bytes).
     Removing interrupt.o(.revsh_text), (4 bytes).
     Removing interrupt.o(.rrx_text), (6 bytes).
     Removing interrupt.o(i.Disable_Interrupt_IRQ), (52 bytes).
-    Removing interrupt.o(i.Enable_Interrupt_IRQ), (88 bytes).
     Removing general_function.o(.rev16_text), (4 bytes).
     Removing general_function.o(.revsh_text), (4 bytes).
     Removing general_function.o(.rrx_text), (6 bytes).
@@ -101,7 +100,7 @@ Removing Unused input sections from the image.
     Removing system_mk60d10.o(i.SystemCoreClockUpdate), (344 bytes).
     Removing system_mk60d10.o(.data), (4 bytes).
 
-45 unused section(s) (total 2170 bytes) removed from the image.
+34 unused section(s) (total 1120 bytes) removed from the image.
 
 ==============================================================================
 
@@ -112,19 +111,19 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     RESET                                    0x00000000   Section     1024  startup_mk60d10.o(RESET)
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
     ..\User\main.c                           0x00000000   Number         0  main.o ABSOLUTE
     ..\\User\\main.c                         0x00000000   Number         0  main.o ABSOLUTE
     ..\\personal function library\\general_function.c 0x00000000   Number         0  general_function.o ABSOLUTE
@@ -158,16 +157,27 @@ Image Symbol Table
     __lit__00000000                          0x00000420   Data           4  entry2.o(.ARM.Collect$$$$00002712)
     .text                                    0x00000424   Section       36  startup_mk60d10.o(.text)
     .text                                    0x00000448   Section       36  init.o(.text)
-    i.Init_Led                               0x0000046c   Section        0  led.o(i.Init_Led)
-    i.PORTC_IRQHandler                       0x000004c4   Section        0  interrupt.o(i.PORTC_IRQHandler)
-    i.SysTick_Delay_ms                       0x000004c8   Section        0  systick.o(i.SysTick_Delay_ms)
-    i.SystemInit                             0x00000558   Section        0  system_mk60d10.o(i.SystemInit)
-    i.Toggle_Led_Num                         0x000005bc   Section        0  led.o(i.Toggle_Led_Num)
-    i.__scatterload_copy                     0x000005dc   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x000005ea   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x000005ec   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.main                                   0x000005fa   Section        0  main.o(i.main)
-    STACK                                    0x20000000   Section     1024  startup_mk60d10.o(STACK)
+    i.Enable_Interrupt_IRQ                   0x0000046c   Section        0  interrupt.o(i.Enable_Interrupt_IRQ)
+    i.Enable_Key_Interrupt                   0x000004c4   Section        0  key.o(i.Enable_Key_Interrupt)
+    i.Init_Key                               0x00000544   Section        0  key.o(i.Init_Key)
+    i.Init_Nixie_Tube                        0x00000608   Section        0  nixie_tube.o(i.Init_Nixie_Tube)
+    i.Key_Scan                               0x00000690   Section        0  key.o(i.Key_Scan)
+    i.Light_Nixie_Tube                       0x00000760   Section        0  nixie_tube.o(i.Light_Nixie_Tube)
+    i.Light_Nixie_Tube_Num                   0x0000079c   Section        0  nixie_tube.o(i.Light_Nixie_Tube_Num)
+    i.PORTC_IRQHandler                       0x000007d4   Section        0  interrupt.o(i.PORTC_IRQHandler)
+    i.SysTick_Delay_ms                       0x00000a98   Section        0  systick.o(i.SysTick_Delay_ms)
+    i.SystemInit                             0x00000b28   Section        0  system_mk60d10.o(i.SystemInit)
+    i.Tube_Negative_Count_Num                0x00000b8c   Section        0  nixie_tube.o(i.Tube_Negative_Count_Num)
+    i.Tube_Pause_Count                       0x00000c60   Section        0  nixie_tube.o(i.Tube_Pause_Count)
+    i.__scatterload_copy                     0x00000cbc   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x00000cca   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x00000ccc   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.main                                   0x00000cdc   Section        0  main.o(i.main)
+    .constdata                               0x00000d88   Section       10  nixie_tube.o(.constdata)
+    .constdata                               0x00000d92   Section        4  key.o(.constdata)
+    .data                                    0x20000000   Section        5  main.o(.data)
+    .bss                                     0x20000008   Section       20  key.o(.bss)
+    STACK                                    0x20000020   Section     1024  startup_mk60d10.o(STACK)
 
     Global Symbols
 
@@ -308,18 +318,30 @@ Image Symbol Table
     Watchdog_IRQHandler                      0x0000043f   Thumb Code     0  startup_mk60d10.o(.text)
     __scatterload                            0x00000449   Thumb Code    28  init.o(.text)
     __scatterload_rt2                        0x00000449   Thumb Code     0  init.o(.text)
-    Init_Led                                 0x0000046d   Thumb Code    72  led.o(i.Init_Led)
-    PORTC_IRQHandler                         0x000004c5   Thumb Code     2  interrupt.o(i.PORTC_IRQHandler)
-    SysTick_Delay_ms                         0x000004c9   Thumb Code   134  systick.o(i.SysTick_Delay_ms)
-    SystemInit                               0x00000559   Thumb Code    88  system_mk60d10.o(i.SystemInit)
-    Toggle_Led_Num                           0x000005bd   Thumb Code    24  led.o(i.Toggle_Led_Num)
-    __scatterload_copy                       0x000005dd   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x000005eb   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x000005ed   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    main                                     0x000005fb   Thumb Code    24  main.o(i.main)
-    Region$$Table$$Base                      0x00000614   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00000624   Number         0  anon$$obj.o(Region$$Table)
-    __initial_sp                             0x20000400   Data           0  startup_mk60d10.o(STACK)
+    Enable_Interrupt_IRQ                     0x0000046d   Thumb Code    84  interrupt.o(i.Enable_Interrupt_IRQ)
+    Enable_Key_Interrupt                     0x000004c5   Thumb Code   106  key.o(i.Enable_Key_Interrupt)
+    Init_Key                                 0x00000545   Thumb Code   184  key.o(i.Init_Key)
+    Init_Nixie_Tube                          0x00000609   Thumb Code   120  nixie_tube.o(i.Init_Nixie_Tube)
+    Key_Scan                                 0x00000691   Thumb Code   196  key.o(i.Key_Scan)
+    Light_Nixie_Tube                         0x00000761   Thumb Code    54  nixie_tube.o(i.Light_Nixie_Tube)
+    Light_Nixie_Tube_Num                     0x0000079d   Thumb Code    46  nixie_tube.o(i.Light_Nixie_Tube_Num)
+    PORTC_IRQHandler                         0x000007d5   Thumb Code   690  interrupt.o(i.PORTC_IRQHandler)
+    SysTick_Delay_ms                         0x00000a99   Thumb Code   134  systick.o(i.SysTick_Delay_ms)
+    SystemInit                               0x00000b29   Thumb Code    88  system_mk60d10.o(i.SystemInit)
+    Tube_Negative_Count_Num                  0x00000b8d   Thumb Code   200  nixie_tube.o(i.Tube_Negative_Count_Num)
+    Tube_Pause_Count                         0x00000c61   Thumb Code    80  nixie_tube.o(i.Tube_Pause_Count)
+    __scatterload_copy                       0x00000cbd   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x00000ccb   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x00000ccd   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    main                                     0x00000cdd   Thumb Code   164  main.o(i.main)
+    Nixie_Tube_Num                           0x00000d88   Data          10  nixie_tube.o(.constdata)
+    Key_Matrix_Scan_Sequence                 0x00000d92   Data           4  key.o(.constdata)
+    Region$$Table$$Base                      0x00000d98   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00000db8   Number         0  anon$$obj.o(Region$$Table)
+    ShowNum                                  0x20000000   Data           4  main.o(.data)
+    Count_State                              0x20000004   Data           1  main.o(.data)
+    Key_Flag                                 0x20000008   Data          20  key.o(.bss)
+    __initial_sp                             0x20000420   Data           0  startup_mk60d10.o(STACK)
 
 
 
@@ -329,44 +351,57 @@ Memory Map of the image
 
   Image Entry point : 0x00000411
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00000624, Max: 0x00080000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00000dc0, Max: 0x00080000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00000624, Max: 0x00080000, ABSOLUTE)
-
-    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x00000000   0x00000400   Data   RO          310    RESET               startup_mk60d10.o
-    0x00000400   0x00000010   Code   RO          311    .ARM.__at_0x400     startup_mk60d10.o
-    0x00000410   0x00000000   Code   RO          354  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x00000410   0x00000004   Code   RO          357    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x00000414   0x00000004   Code   RO          360    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x00000418   0x00000000   Code   RO          362    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x00000418   0x00000000   Code   RO          364    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x00000418   0x00000008   Code   RO          365    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x00000420   0x00000000   Code   RO          367    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x00000420   0x00000000   Code   RO          369    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x00000420   0x00000004   Code   RO          358    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
-    0x00000424   0x00000024   Code   RO          312    .text               startup_mk60d10.o
-    0x00000448   0x00000024   Code   RO          371    .text               mc_w.l(init.o)
-    0x0000046c   0x00000058   Code   RO          143    i.Init_Led          led.o
-    0x000004c4   0x00000002   Code   RO          228    i.PORTC_IRQHandler  interrupt.o
-    0x000004c6   0x00000002   PAD
-    0x000004c8   0x00000090   Code   RO          283    i.SysTick_Delay_ms  systick.o
-    0x00000558   0x00000064   Code   RO          322    i.SystemInit        system_mk60d10.o
-    0x000005bc   0x00000020   Code   RO          145    i.Toggle_Led_Num    led.o
-    0x000005dc   0x0000000e   Code   RO          375    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x000005ea   0x00000002   Code   RO          376    i.__scatterload_null  mc_w.l(handlers.o)
-    0x000005ec   0x0000000e   Code   RO          377    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x000005fa   0x00000018   Code   RO            4    i.main              main.o
-    0x00000612   0x00000002   PAD
-    0x00000614   0x00000010   Data   RO          373    Region$$Table       anon$$obj.o
-
-
-    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000400, Max: 0x00010000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00000db8, Max: 0x00080000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00000400   Zero   RW          308    STACK               startup_mk60d10.o
+    0x00000000   0x00000400   Data   RO          314    RESET               startup_mk60d10.o
+    0x00000400   0x00000010   Code   RO          315    .ARM.__at_0x400     startup_mk60d10.o
+    0x00000410   0x00000000   Code   RO          358  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x00000410   0x00000004   Code   RO          361    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x00000414   0x00000004   Code   RO          364    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x00000418   0x00000000   Code   RO          366    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x00000418   0x00000000   Code   RO          368    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x00000418   0x00000008   Code   RO          369    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x00000420   0x00000000   Code   RO          371    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x00000420   0x00000000   Code   RO          373    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x00000420   0x00000004   Code   RO          362    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x00000424   0x00000024   Code   RO          316    .text               startup_mk60d10.o
+    0x00000448   0x00000024   Code   RO          375    .text               mc_w.l(init.o)
+    0x0000046c   0x00000058   Code   RO          230    i.Enable_Interrupt_IRQ  interrupt.o
+    0x000004c4   0x00000080   Code   RO          182    i.Enable_Key_Interrupt  key.o
+    0x00000544   0x000000c4   Code   RO          183    i.Init_Key          key.o
+    0x00000608   0x00000088   Code   RO           76    i.Init_Nixie_Tube   nixie_tube.o
+    0x00000690   0x000000d0   Code   RO          184    i.Key_Scan          key.o
+    0x00000760   0x0000003c   Code   RO           77    i.Light_Nixie_Tube  nixie_tube.o
+    0x0000079c   0x00000038   Code   RO           78    i.Light_Nixie_Tube_Num  nixie_tube.o
+    0x000007d4   0x000002c4   Code   RO          231    i.PORTC_IRQHandler  interrupt.o
+    0x00000a98   0x00000090   Code   RO          287    i.SysTick_Delay_ms  systick.o
+    0x00000b28   0x00000064   Code   RO          326    i.SystemInit        system_mk60d10.o
+    0x00000b8c   0x000000d4   Code   RO           80    i.Tube_Negative_Count_Num  nixie_tube.o
+    0x00000c60   0x0000005c   Code   RO           81    i.Tube_Pause_Count  nixie_tube.o
+    0x00000cbc   0x0000000e   Code   RO          379    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x00000cca   0x00000002   Code   RO          380    i.__scatterload_null  mc_w.l(handlers.o)
+    0x00000ccc   0x0000000e   Code   RO          381    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x00000cda   0x00000002   PAD
+    0x00000cdc   0x000000ac   Code   RO            4    i.main              main.o
+    0x00000d88   0x0000000a   Data   RO           84    .constdata          nixie_tube.o
+    0x00000d92   0x00000004   Data   RO          186    .constdata          key.o
+    0x00000d96   0x00000002   PAD
+    0x00000d98   0x00000020   Data   RO          377    Region$$Table       anon$$obj.o
+
+
+    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000420, Max: 0x00010000, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000000   0x00000005   Data   RW            5    .data               main.o
+    0x20000005   0x00000003   PAD
+    0x20000008   0x00000014   Zero   RW          185    .bss                key.o
+    0x2000001c   0x00000004   PAD
+    0x20000020   0x00000400   Zero   RW          312    STACK               startup_mk60d10.o
 
 
 ==============================================================================
@@ -376,17 +411,18 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-         2          0          0          0          0        463   interrupt.o
-       120         24          0          0          0       1040   led.o
-        24          0          0          0          0     240067   main.o
+       796         22          0          0          0       1670   interrupt.o
+       532         46          4          0         20      24876   key.o
+       172          8          0          5          0     240753   main.o
+       556         56         10          0          0       3828   nixie_tube.o
         52         24       1024          0       1024       1028   startup_mk60d10.o
        100         12          0          0          0        509   system_mk60d10.o
        144         10          0          0          0      22998   systick.o
 
     ----------------------------------------------------------------------
-       446         70       1040          0       1024     266105   Object Totals
-         0          0         16          0          0          0   (incl. Generated)
-         4          0          0          0          0          0   (incl. Padding)
+      2352        178       1072          8       1048     295662   Object Totals
+         0          0         32          0          0          0   (incl. Generated)
+         0          0          2          3          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -404,8 +440,8 @@ Image component sizes
         36          8          0          0          0         68   init.o
 
     ----------------------------------------------------------------------
-        86         16          0          0          0         68   Library Totals
-         0          0          0          0          0          0   (incl. Padding)
+        88         16          0          0          0         68   Library Totals
+         2          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -414,7 +450,7 @@ Image component sizes
         86         16          0          0          0         68   mc_w.l
 
     ----------------------------------------------------------------------
-        86         16          0          0          0         68   Library Totals
+        88         16          0          0          0         68   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -423,15 +459,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-       532         86       1040          0       1024     266169   Grand Totals
-       532         86       1040          0       1024     266169   ELF Image Totals
-       532         86       1040          0          0          0   ROM Totals
+      2440        194       1072          8       1048     295310   Grand Totals
+      2440        194       1072          8       1048     295310   ELF Image Totals
+      2440        194       1072          8          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 1572 (   1.54kB)
-    Total RW  Size (RW Data + ZI Data)              1024 (   1.00kB)
-    Total ROM Size (Code + RO Data + RW Data)       1572 (   1.54kB)
+    Total RO  Size (Code + RO Data)                 3512 (   3.43kB)
+    Total RW  Size (RW Data + ZI Data)              1056 (   1.03kB)
+    Total ROM Size (Code + RO Data + RW Data)       3520 (   3.44kB)
 
 ==============================================================================
 

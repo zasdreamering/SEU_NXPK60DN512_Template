@@ -4,13 +4,31 @@
 #include "key.h"
 
 
+uint8_t ShowNum[4] = {0xFF,0xFF,0xFF,0xFF};
+uint8_t Count_State = OFF;
+
 int main(void)
 {
-	Init_Led();
+	uint32_t Count;
+	Init_Key();
+	Init_Nixie_Tube();
+	Enable_Key_Interrupt();
 	while(1)
 	{
-		SysTick_Delay_ms(500);
-		Toggle_Led_Num(1,ON);
+		Tube_Pause_Count();
+		if(Count_State)
+		{
+			if(ShowNum[3] != 0xFF)
+				Count = (ShowNum[3]*1000+ShowNum[2]*100+ShowNum[1]*10+ShowNum[0]);
+			else if(ShowNum[2] != 0xFF)
+				Count = (ShowNum[2]*100+ShowNum[1]*10+ShowNum[0]);
+			else if(ShowNum[1] != 0xFF)
+				Count = (ShowNum[1]*10+ShowNum[0]);
+			else
+				Count = (ShowNum[0]);
+			Tube_Negative_Count_Num(Count);
+			Count_State = OFF;
+		}
 	}
 }
 
