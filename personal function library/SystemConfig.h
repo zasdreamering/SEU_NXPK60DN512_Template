@@ -3,6 +3,10 @@
 
 #include "MK60D10.h"
 
+
+#include "stdlib.h"
+#include "string.h"
+
 #include "interrupt.h"
 #include "systick.h"
 

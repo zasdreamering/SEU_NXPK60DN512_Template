@@ -4,6 +4,7 @@
 #include "MK60D10.h"
 #include "led.h"
 #include "key.h"
+#include "uart.h"
 
 
 #define Enable_Interrupts  __asm("CPSIE I")

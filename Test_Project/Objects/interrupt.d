@@ -9,6 +9,9 @@
 .\objects\interrupt.o: D:\Software\Keil 516a\ARM\PACK\Keil\Kinetis_K60_DFP\1.5.0\Device\Include\system_MK60D10.h
 .\objects\interrupt.o: ..\personal function library\led.h
 .\objects\interrupt.o: ..\personal function library\SystemConfig.h
+.\objects\interrupt.o: D:\Software\Keil 516a\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\interrupt.o: D:\Software\Keil 516a\ARM\ARMCC\Bin\..\include\string.h
 .\objects\interrupt.o: ..\personal function library\interrupt.h
 .\objects\interrupt.o: ..\personal function library\systick.h
 .\objects\interrupt.o: ..\personal function library\key.h
+.\objects\interrupt.o: ..\personal function library\uart.h

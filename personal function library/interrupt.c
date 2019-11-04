@@ -2,6 +2,9 @@
 
 extern uint8_t ShowNum[4];
 extern uint8_t Count_State;
+extern char StartSend;
+extern char SendMessage[];
+
 
 void Enable_Interrupt_IRQ(IRQn_Type IRQ)
 {
@@ -146,6 +149,8 @@ void PORTC_IRQHandler()
 	}
 	if(KEY_Star == ON)
 	{
+		if(StartSend)
+			UART2_TransmitString(SendMessage);
 		KEY_Star = OFF;
 	}
 	Count_State = OFF;
@@ -155,5 +160,9 @@ void PORTC_IRQHandler()
 		KEY_Well = OFF;
 	}
 	for(i=8;i<16;i++) PORTC->PCR[i] |= 1<<24;
+}
+void UART2_RX_TX_IRQHandler()
+{
+	StartSend = UART2_ReceiveChar();
 }
 

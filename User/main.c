@@ -2,10 +2,12 @@
 #include "nixie_tube.h"
 #include "led.h"
 #include "key.h"
-
+#include "uart.h"
 
 uint8_t ShowNum[4] = {0xFF,0xFF,0xFF,0xFF};
 uint8_t Count_State = OFF;
+char SendMessage[] = "The number in the tube is 0000\n";
+char StartSend = OFF;
 
 int main(void)
 {
@@ -13,6 +15,7 @@ int main(void)
 	Init_Key();
 	Init_Nixie_Tube();
 	Enable_Key_Interrupt();
+	Init_UART(115200);
 	while(1)
 	{
 		Tube_Pause_Count();
