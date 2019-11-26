@@ -13,5 +13,6 @@
 .\objects\interrupt.o: D:\Software\Keil 516a\ARM\ARMCC\Bin\..\include\string.h
 .\objects\interrupt.o: ..\personal function library\interrupt.h
 .\objects\interrupt.o: ..\personal function library\systick.h
+.\objects\interrupt.o: ..\personal function library\pit.h
 .\objects\interrupt.o: ..\personal function library\key.h
 .\objects\interrupt.o: ..\personal function library\uart.h

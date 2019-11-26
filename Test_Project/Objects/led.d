@@ -16,3 +16,4 @@
 .\objects\led.o: ..\personal function library\SystemConfig.h
 .\objects\led.o: ..\personal function library\uart.h
 .\objects\led.o: ..\personal function library\systick.h
+.\objects\led.o: ..\personal function library\pit.h

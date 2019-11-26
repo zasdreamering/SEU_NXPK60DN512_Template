@@ -19,7 +19,7 @@ void Init_Key(void)
 {
 	uint8_t i;
 	//Dependant Key Initation
-	SIM->SCGC5 |= PORTC_CLK_ON;
+	SIM->SCGC5 |= SIM_SCGC5_PORTC_MASK;
 	for(i=12;i<16;i++) 
 	{
 		PORTC->PCR[i] |= (1<<8);

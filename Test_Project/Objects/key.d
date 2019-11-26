@@ -16,3 +16,4 @@
 .\objects\key.o: ..\personal function library\key.h
 .\objects\key.o: ..\personal function library\uart.h
 .\objects\key.o: ..\personal function library\systick.h
+.\objects\key.o: ..\personal function library\pit.h

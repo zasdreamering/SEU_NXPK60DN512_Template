@@ -15,4 +15,5 @@
 .\objects\main.o: ..\personal function library\key.h
 .\objects\main.o: ..\personal function library\uart.h
 .\objects\main.o: ..\personal function library\systick.h
+.\objects\main.o: ..\personal function library\pit.h
 .\objects\main.o: ..\personal function library\nixie_tube.h

@@ -471,6 +471,21 @@
               <FileType>1</FileType>
               <FilePath>..\personal function library\uart.c</FilePath>
             </File>
+            <File>
+              <FileName>pit.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\personal function library\pit.c</FilePath>
+            </File>
+            <File>
+              <FileName>adc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\personal function library\adc.c</FilePath>
+            </File>
+            <File>
+              <FileName>dac.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\personal function library\dac.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

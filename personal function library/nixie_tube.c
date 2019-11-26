@@ -14,7 +14,7 @@ void Init_Nixie_Tube(void)
 	
 	
 	//开启相关寄存器时钟
-	SIM->SCGC5 |= PORTB_CLK_ON|PORTC_CLK_ON;
+	SIM->SCGC5 |= SIM_SCGC5_PORTB_MASK|SIM_SCGC5_PORTC_MASK;
 	
 	//将相关端口引脚配置为GPIO模式
 	for(i=16;i<24;i++) PORTB->PCR[i] |= (1<<8);

@@ -4,9 +4,11 @@ void Init_UART(uint32_t baud)
 {
 	uint64_t sbrvl = 0;
 	uint8_t brfavl = 0;
+	SIM->SCGC5 |= SIM_SCGC5_PORTD_MASK;
 	SIM->SCGC4 |= SIM_SCGC4_UART2_MASK;
-
-	PORTD->PCR[2] |= 0x3<<8;
+	
+	
+	PORTD->PCR[3] |= 0x3<<8;
 	PORTD->PCR[2] |= 0x3<<8;
 	
 	UART2->C1 &= ~UART_C1_PE_MASK;   //ะฃั้ฮป

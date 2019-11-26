@@ -16,3 +16,4 @@
 .\objects\nixie_tube.o: ..\personal function library\key.h
 .\objects\nixie_tube.o: ..\personal function library\uart.h
 .\objects\nixie_tube.o: ..\personal function library\systick.h
+.\objects\nixie_tube.o: ..\personal function library\pit.h

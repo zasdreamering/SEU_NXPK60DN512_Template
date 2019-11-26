@@ -16,4 +16,5 @@
 .\objects\general_function.o: ..\personal function library\key.h
 .\objects\general_function.o: ..\personal function library\uart.h
 .\objects\general_function.o: ..\personal function library\systick.h
+.\objects\general_function.o: ..\personal function library\pit.h
 .\objects\general_function.o: ..\personal function library\nixie_tube.h
